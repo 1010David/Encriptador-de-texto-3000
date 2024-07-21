@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo CSS cuando lo tengas -->
+</head>
+<body>
+    <header>
+        <!-- Logo y aviso -->
+        <div id="logo">
+            <img src="logo.png" alt="Logo"> <!-- Asegúrate de tener el logo en tu carpeta de imágenes -->
+        </div>
+        <div id="alert">
+            <img src="warning-icon.png" alt="Warning Icon"> <!-- Asegúrate de tener el ícono de advertencia -->
+            <p>Solo letras minúsculas y sin acentos.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Área para mostrar textos y entrada de datos -->
+        <div id="message-container">
+            <div id="message-content">
+                <p id="message-default">Ningún mensaje fue encontrado</p>
+                <p id="message-prompt">Ingresa el texto que desees encriptar o desencriptar</p>
+            </div>
+        </div>
+
+        <textarea id="text-input" placeholder="Ingrese el texto aquí..."></textarea>
+
+        <div id="button-frame">
+            <button id="encrypt-btn">Encriptar</button>
+            <button id="decrypt-btn">Desencriptar</button>
+            <button id="copy-btn" style="display: none;">Copiar</button>
+        </div>
+
+        <!-- Área para mostrar el texto encriptado/desencriptado -->
+        <div id="result-container" style="display: none;">
+            <textarea id="text-output" readonly></textarea>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Datos del desarrollador -->
+        <p>Desarrollado por [Tu Nombre] - [Año]</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Enlaza tu archivo JavaScript -->
+</body>
+</html>
