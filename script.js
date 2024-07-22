@@ -1,5 +1,3 @@
-// script.js
-
 // Función para encriptar el texto
 function encryptText(text) {
     return text
@@ -24,7 +22,8 @@ function decryptText(text) {
 function handleEncrypt() {
     const inputText = document.getElementById("text-input").value;
     const outputArea = document.getElementById("text-output");
-    const messageContent = document.getElementById("message-content");
+    const messageDefault = document.getElementById("message-default");
+    const messagePrompt = document.getElementById("message-prompt");
     const copyBtn = document.getElementById("copy-btn");
     const resultContainer = document.getElementById("result-container");
     const alertContainer = document.getElementById("alert");
@@ -35,9 +34,10 @@ function handleEncrypt() {
         return;
     }
 
-    alertContainer.style.display = "none";
+    alertContainer.style.display = "flex"; // Asegúrate de que el contenedor de alerta esté visible siempre
     outputArea.value = encryptText(inputText);
-    messageContent.innerHTML = `<p>${outputArea.value}</p>`;
+    messageDefault.style.display = "none";
+    messagePrompt.style.display = "none"; // Oculta el mensaje predeterminado y el mensaje de aviso
     resultContainer.style.display = "block";
     copyBtn.style.display = "block";
 }
@@ -46,7 +46,8 @@ function handleEncrypt() {
 function handleDecrypt() {
     const inputText = document.getElementById("text-input").value;
     const outputArea = document.getElementById("text-output");
-    const messageContent = document.getElementById("message-content");
+    const messageDefault = document.getElementById("message-default");
+    const messagePrompt = document.getElementById("message-prompt");
     const copyBtn = document.getElementById("copy-btn");
     const resultContainer = document.getElementById("result-container");
     const alertContainer = document.getElementById("alert");
@@ -54,12 +55,14 @@ function handleDecrypt() {
     // Verificar si el texto contiene caracteres no permitidos
     if (/[^a-z\s]/.test(inputText)) {
         alertContainer.style.display = "flex";
+        alert("El texto contiene caracteres no permitidos. Solo letras minúsculas y sin acentos.");
         return;
     }
 
-    alertContainer.style.display = "none";
+    alertContainer.style.display = "flex"; // Asegúrate de que el contenedor de alerta esté visible siempre
     outputArea.value = decryptText(inputText);
-    messageContent.innerHTML = `<p>${outputArea.value}</p>`;
+    messageDefault.style.display = "none";
+    messagePrompt.style.display = "none"; // Oculta el mensaje predeterminado y el mensaje de aviso
     resultContainer.style.display = "block";
     copyBtn.style.display = "block";
 }
@@ -71,7 +74,15 @@ function copyToClipboard() {
     document.execCommand("copy");
 }
 
+// Función para recargar la página al hacer clic en el logo
+function reloadPage() {
+    window.location.reload();
+}
+
 // Asignar las funciones a los botones
 document.getElementById("encrypt-btn").addEventListener("click", handleEncrypt);
 document.getElementById("decrypt-btn").addEventListener("click", handleDecrypt);
 document.getElementById("copy-btn").addEventListener("click", copyToClipboard);
+
+// Asignar la función de recarga al clic en el logo
+document.getElementById("logo-link").addEventListener("click", reloadPage);
