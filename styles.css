@@ -1,0 +1,170 @@
+/* Definir variables CSS en la raíz */
+:root {
+    --font-family: 'Arial', sans-serif;
+    --font-size-base: 16px;
+    --color-primary: #4caf50;
+    --color-secondary: #f44336;
+    --color-tertiary: #2196f3;
+    --color-bg: #f9f9f9;
+    --color-text: #333;
+    --color-white: #fff;
+    --padding-base: 20px;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset de CSS para evitar inconsistencias entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Establecer estilos básicos para el cuerpo */
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Estilos para el encabezado */
+header {
+    width: 100%;
+    background-color: var(--color-primary);
+    padding: var(--padding-base);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header #logo img {
+    height: 40px;
+}
+
+header #alert {
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+}
+
+header #alert i {
+    margin-right: 10px;
+}
+
+header #alert p {
+    margin: 0;
+}
+
+/* Estilos para el contenedor principal */
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    padding: var(--padding-base);
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-white);
+    margin: var(--padding-base);
+    border-radius: var(--border-radius);
+}
+
+#left-container, #right-container {
+    flex: 1;
+    padding: var(--padding-base);
+}
+
+#left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#button-frame {
+    display: flex;
+    justify-content: space-around;
+    margin: var(--padding-base) 0;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: var(--font-size-base);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button#encrypt-btn {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+button#decrypt-btn {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+button#copy-btn {
+    background-color: var(--color-tertiary);
+    color: var(--color-white);
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#result-container {
+    display: block;
+    margin-top: var(--padding-base);
+}
+
+#result-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#image-container {
+    display: block;
+}
+
+#message-container {
+    text-align: center;
+}
+
+#message-default, #message-prompt {
+    margin: 10px 0;
+}
+
+footer {
+    margin-top: 40px;
+    padding: var(--padding-base);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    width: 100%;
+    box-shadow: var(--box-shadow);
+}
+
+footer p {
+    margin: 0;
+}

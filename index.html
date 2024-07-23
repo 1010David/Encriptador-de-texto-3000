@@ -4,47 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encriptador de Texto</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo CSS cuando lo tengas -->
+    <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <!-- Logo y aviso -->
         <div id="logo">
-            <a href="#" id="logo-link"><img src="logo.png" alt="Logo"></a> <!-- Asegúrate de tener el logo en tu carpeta de imágenes -->
+            <a href="#" id="logo-link"><img src="logo.png" alt="Logo"></a>
         </div>
         <div id="alert">
-    <i class="fas fa-exclamation-triangle"></i> <!-- Ícono de advertencia -->
-    <p>Solo letras minúsculas y sin acentos.</p>
-</div>
-
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Solo letras minúsculas y sin acentos.</p>
+        </div>
     </header>
-
+    
     <main>
-        <!-- Área para mostrar textos y entrada de datos -->
-        <div id="message-container">
-            <div id="message-content">
-                <p id="message-default">Ningún mensaje fue encontrado</p>
-                <p id="message-prompt">Ingresa el texto que desees encriptar o desencriptar</p>
+        <div id="left-container">
+            <textarea id="text-input" placeholder="Ingrese el texto aquí..."></textarea>
+            <div id="button-frame">
+                <button id="encrypt-btn">Encriptar</button>
+                <button id="decrypt-btn">Desencriptar</button>
             </div>
         </div>
-
-        <textarea id="text-input" placeholder="Ingrese el texto aquí..."></textarea>
-
-        <div id="button-frame">
-            <button id="encrypt-btn">Encriptar</button>
-            <button id="decrypt-btn">Desencriptar</button>
-            <button id="copy-btn" style="display: none;">Copiar</button>
-        </div>
-
-        <!-- Área para mostrar el texto encriptado/desencriptado -->
-        <div id="result-container" style="display: none;">
-            <textarea id="text-output" readonly></textarea>
+        
+        <div id="right-container">
+            <div id="image-container">
+                <img src="your-image.png" alt="Descripción de la imagen" id="result-image">
+            </div>
+            <div id="message-container">
+                <div id="message-content">
+                    <p id="message-default">Ningún mensaje fue encontrado</p>
+                    <p id="message-prompt">Ingresa el texto que desees encriptar o desencriptar</p>
+                </div>
+            </div>
+            <div id="result-container" style="display: none;">
+                <textarea id="text-output" readonly></textarea>
+                <button id="copy-btn" style="display: none;">Copiar</button>
+            </div>
         </div>
     </main>
 
     <footer>
-        <!-- Datos del desarrollador -->
         <p>Desarrollado por [Tu Nombre] - [Año]</p>
     </footer>
 

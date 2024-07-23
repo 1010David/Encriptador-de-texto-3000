@@ -1,88 +1,88 @@
-// Función para encriptar el texto
+// Obtener elementos del DOM
+const textInput = document.getElementById('text-input');
+const textOutput = document.getElementById('text-output');
+const encryptBtn = document.getElementById('encrypt-btn');
+const decryptBtn = document.getElementById('decrypt-btn');
+const copyBtn = document.getElementById('copy-btn');
+const resultContainer = document.getElementById('result-container');
+const messageDefault = document.getElementById('message-default');
+const messagePrompt = document.getElementById('message-prompt');
+const resultImage = document.getElementById('result-image');
+const logoLink = document.getElementById('logo-link');
+
+// Función para encriptar texto
 function encryptText(text) {
     return text
-        .replace(/e/g, "enter")
-        .replace(/i/g, "imes")
-        .replace(/a/g, "ai")
-        .replace(/o/g, "ober")
-        .replace(/u/g, "ufat");
+        .replace(/e/g, 'enter')
+        .replace(/i/g, 'imes')
+        .replace(/a/g, 'ai')
+        .replace(/o/g, 'ober')
+        .replace(/u/g, 'ufat');
 }
 
-// Función para desencriptar el texto
+// Función para desencriptar texto
 function decryptText(text) {
     return text
-        .replace(/enter/g, "e")
-        .replace(/imes/g, "i")
-        .replace(/ai/g, "a")
-        .replace(/ober/g, "o")
-        .replace(/ufat/g, "u");
+        .replace(/enter/g, 'e')
+        .replace(/imes/g, 'i')
+        .replace(/ai/g, 'a')
+        .replace(/ober/g, 'o')
+        .replace(/ufat/g, 'u');
 }
 
-// Función para manejar el clic del botón de encriptar
-function handleEncrypt() {
-    const inputText = document.getElementById("text-input").value;
-    const outputArea = document.getElementById("text-output");
-    const messageDefault = document.getElementById("message-default");
-    const messagePrompt = document.getElementById("message-prompt");
-    const copyBtn = document.getElementById("copy-btn");
-    const resultContainer = document.getElementById("result-container");
-    const alertContainer = document.getElementById("alert");
+// Función para copiar el texto al portapapeles
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Texto copiado al portapapeles');
+    });
+}
 
-    // Verificar si el texto contiene caracteres no permitidos
-    if (/[^a-z\s]/.test(inputText)) {
-        alertContainer.style.display = "flex";
-        return;
+// Función para reiniciar el estado de la página
+function resetPage() {
+    textInput.value = '';
+    textOutput.value = '';
+    resultContainer.style.display = 'none';
+    resultImage.style.display = 'block'; // Mostrar la imagen
+    messageDefault.style.display = 'block';
+    messagePrompt.style.display = 'block';
+    copyBtn.style.display = 'none';
+}
+
+// Event listener para el botón de encriptar
+encryptBtn.addEventListener('click', () => {
+    const inputText = textInput.value.trim();
+    if (inputText) {
+        const encryptedText = encryptText(inputText);
+        textOutput.value = encryptedText;
+        resultContainer.style.display = 'block';
+        resultImage.style.display = 'none'; // Ocultar la imagen
+        messageDefault.style.display = 'none';
+        messagePrompt.style.display = 'none';
+        copyBtn.style.display = 'block';
     }
+});
 
-    alertContainer.style.display = "flex"; // Asegúrate de que el contenedor de alerta esté visible siempre
-    outputArea.value = encryptText(inputText);
-    messageDefault.style.display = "none";
-    messagePrompt.style.display = "none"; // Oculta el mensaje predeterminado y el mensaje de aviso
-    resultContainer.style.display = "block";
-    copyBtn.style.display = "block";
-}
-
-// Función para manejar el clic del botón de desencriptar
-function handleDecrypt() {
-    const inputText = document.getElementById("text-input").value;
-    const outputArea = document.getElementById("text-output");
-    const messageDefault = document.getElementById("message-default");
-    const messagePrompt = document.getElementById("message-prompt");
-    const copyBtn = document.getElementById("copy-btn");
-    const resultContainer = document.getElementById("result-container");
-    const alertContainer = document.getElementById("alert");
-
-    // Verificar si el texto contiene caracteres no permitidos
-    if (/[^a-z\s]/.test(inputText)) {
-        alertContainer.style.display = "flex";
-        alert("El texto contiene caracteres no permitidos. Solo letras minúsculas y sin acentos.");
-        return;
+// Event listener para el botón de desencriptar
+decryptBtn.addEventListener('click', () => {
+    const inputText = textInput.value.trim();
+    if (inputText) {
+        const decryptedText = decryptText(inputText);
+        textOutput.value = decryptedText;
+        resultContainer.style.display = 'block';
+        resultImage.style.display = 'none'; // Ocultar la imagen
+        messageDefault.style.display = 'none';
+        messagePrompt.style.display = 'none';
+        copyBtn.style.display = 'block';
     }
+});
 
-    alertContainer.style.display = "flex"; // Asegúrate de que el contenedor de alerta esté visible siempre
-    outputArea.value = decryptText(inputText);
-    messageDefault.style.display = "none";
-    messagePrompt.style.display = "none"; // Oculta el mensaje predeterminado y el mensaje de aviso
-    resultContainer.style.display = "block";
-    copyBtn.style.display = "block";
-}
+// Event listener para el botón de copiar
+copyBtn.addEventListener('click', () => {
+    copyToClipboard(textOutput.value);
+});
 
-// Función para copiar el texto del área de resultados al portapapeles
-function copyToClipboard() {
-    const outputArea = document.getElementById("text-output");
-    outputArea.select();
-    document.execCommand("copy");
-}
-
-// Función para recargar la página al hacer clic en el logo
-function reloadPage() {
-    window.location.reload();
-}
-
-// Asignar las funciones a los botones
-document.getElementById("encrypt-btn").addEventListener("click", handleEncrypt);
-document.getElementById("decrypt-btn").addEventListener("click", handleDecrypt);
-document.getElementById("copy-btn").addEventListener("click", copyToClipboard);
-
-// Asignar la función de recarga al clic en el logo
-document.getElementById("logo-link").addEventListener("click", reloadPage);
+// Event listener para el clic en el logo
+logoLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Evita el comportamiento por defecto del enlace
+    resetPage(); // Llama a la función para reiniciar la página
+});
