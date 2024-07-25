@@ -1,18 +1,17 @@
 /* Definir variables CSS en la raíz con la nueva paleta de colores */
 :root {
     --font-family: 'Arial', sans-serif;
-    --font-size-base: 16px;
-    --color-primary: #0b8786; /* color3 */
-    --color-secondary: #fbde55; /* color5 */
-    --color-tertiary: #12be3d; /* color4 */
-    --color-bg: #e3f2f6; /* color1 */
-    --color-text: #333;
-    --color-white: #fff1f4; /* color2 */
-    --color-left-container: #e3f2f6; /* Color de fondo para el contenedor izquierdo (igual al del fondo general) */
-    --color-right-container: #f3f4f6; /* Color de fondo para el contenedor derecho */
+
+    --color-primary: #12e7e7; /* color3 */
+    --color-secondary: #fcd308; /* color5 */
+    --color-tertiary: #0cf546; /* color4 */
+    --color-bg: #0b5063; /* color1 */
+    --color-text: #552424;
+    --color-white: #758488; /* color2 */
+    --color-left-container: #758488; /* Color de fondo para el contenedor izquierdo (igual al del fondo general) */
+    --color-right-container: #758488; /* Color de fondo para el contenedor derecho */
     --padding-base: 20px;
     --border-radius: 8px;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Reset de CSS para evitar inconsistencias entre navegadores */
@@ -30,7 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ocupa toda la altura de la ventana */
-    margin: 0;
+    margin: 10px;
 }
 
 /* Estilos para el encabezado */
@@ -38,11 +37,173 @@ header {
     width: 100%;
     background-color: var(--color-bg); /* Usa el mismo color de fondo que el cuerpo */
     padding: var(--padding-base);
-    box-shadow: var(--box-shadow);
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
+/* Contenedor principal que ocupa todo el espacio disponible entre el header y el footer */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre los contenedores izquierdo y derecho */
+    align-items: stretch; /* Asegura que los contenedores se estiren para ocupar todo el espacio disponible */
+    width: 80%;
+    max-width: 1200px;
+    padding: var(--padding-base);
+    background-color: var(--color-white);
+    margin: var(--padding-base);
+    border-radius: var(--border-radius);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos para el contenedor izquierdo */
+#left-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--padding-base);
+    background-color: var(--color-left-container);
+    height: 100%; /* Ocupa toda la altura disponible del contenedor principal */
+}
+
+#text-input {
+    width: 100%; /* Ocupa el ancho completo del contenedor padre */
+    flex: 1; /* Permite que el textarea se expanda para ocupar el espacio disponible */
+    padding: 50px; /* Espacio interno dentro del contenedor, ajusta según sea necesario */
+    background-color: var(--color-); /* Fondo opcional para destacar el contenedor */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo de width y height */
+    min-height: 500px; /* Altura mínima del contenedor, ajusta según sea necesario */
+    margin-bottom: 200px; /* Ajusta el margen inferior si es necesario */
+}
+
+
+#alert {
+    margin-bottom: 20px; /* Espacio entre el aviso y los botones */
+    margin-top: auto; /* Empuja el aviso hacia arriba, si es necesario */
+}
+
+#button-frame {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Estilos para el contenedor derecho */
+#right-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    background-color: var(--color-right-container);
+    border-radius: var(--border-radius);
+    height: 100%; /* Asegura que el contenedor ocupe toda la altura del contenedor principal */
+}
+
+/* Ajustes para los elementos dentro del contenedor derecho */
+#image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 250px;
+}
+
+#result-image {
+    max-width: 100%;
+    height: auto;
+    padding: 160px;
+
+}
+
+#message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1; /* Permite que el contenedor de mensaje ocupe el espacio disponible */
+    padding: 10px; /* Ajusta según sea necesario para mejorar la alineación */
+}
+
+h3#message-default {
+    font-size: 24px;
+    color: var(--color-primary); /* Color para h3 */
+    margin-bottom: 20px; /* Espacio inferior opcional */
+}
+
+h4#message-prompt {
+    font-size: 16px;
+    color: var(--color-secondary); /* Color para h4 */
+    margin-bottom: 10px; /* Espacio inferior opcional */
+}
+
+
+
+
+#text-output {
+    width: 100%;
+    padding: 20px; /* Ajusta el padding según sea necesario */
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    min-height: 500px; /* Asegura que tenga una altura mínima consistente */
+    margin-bottom: 250px; /* Asegura que el margen no afecte el alineamiento */
+}
+
+
+
+#copy-btn {
+    padding: 10px 20px;
+    font-size: var(--font-size-base);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--color-tertiary);
+    color: var(--color-white);
+    transition: background-color 0.3s;
+}
+
+/* Estilos para los textos y botones */
+textarea {
+    width: 100%;
+    height: auto;
+    padding: var(--padding-base);
+    font-size: var(--font-size-base);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    resize: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: var(--font-size-base);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--color-secondary);
+}
+
+p {
+    font-size: var(--font-size-base);
+}
+
+#alert p {
+    color: var(--color-primary); /* Cambia el color del texto del aviso */
+}
+
+#alert i {
+    color: var(--color-primary); /* Cambia el color del icono del aviso */
+}
+
 
 /* Estilos para el pie de página */
 footer {
@@ -53,123 +214,4 @@ footer {
     width: 100%;
     box-shadow: var(--box-shadow);
     margin-top: auto; /* Asegura que el pie de página esté en la parte inferior */
-}
-
-/* Contenedor principal que ocupa todo el espacio disponible entre el header y el footer */
-main {
-    flex: 1;
-    display: flex;
-    justify-content: space-between; /* Distribuye el espacio entre los contenedores izquierdo y derecho */
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1200px;
-    padding: var(--padding-base);
-    box-shadow: var(--box-shadow);
-    background-color: var(--color-white);
-    margin: var(--padding-base);
-    border-radius: var(--border-radius);
-    margin-left: auto; /* Asegura que el contenido esté centrado en la ventana */
-    margin-right: auto;
-}
-
-/* Estilos para el contenedor izquierdo */
-#left-container {
-    flex: 1;
-    padding: var(--padding-base);
-    background-color: var(--color-left-container); /* Mismo color de fondo que el cuerpo */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%; /* Ocupa toda la altura disponible del contenedor principal */
-    border: none; /* Elimina los bordes */
-}
-
-/* Ajustes para los elementos dentro del contenedor izquierdo */
-#text-input {
-    margin-top: 0;
-    margin-bottom: var(--padding-base); /* Espacio entre el textarea y el aviso */
-}
-
-#alert {
-    margin-bottom: var(--padding-base); /* Espacio entre el aviso y los botones */
-}
-
-#button-frame {
-    margin-bottom: 0; /* Elimina el margen inferior para alinear los botones con el aviso */
-}
-
-/* Estilos para el contenedor derecho */
-#right-container {
-    flex: 1;
-    padding: var(--padding-base);
-    background-color: var(--color-right-container);
-}
-
-/* Estilos para los textos y botones */
-textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    resize: vertical;
-}
-
-#button-frame {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: var(--font-size-base);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button#encrypt-btn {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-}
-
-button#decrypt-btn {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-}
-
-button#copy-btn {
-    background-color: var(--color-tertiary);
-    color: var(--color-white);
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-#result-container {
-    display: block;
-    margin-top: var(--padding-base);
-}
-
-#result-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-#image-container {
-    display: block;
-}
-
-#message-container {
-    text-align: center;
-}
-
-#message-default, #message-prompt {
-    margin: 10px 0;
 }
