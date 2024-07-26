@@ -1,17 +1,19 @@
 /* Definir variables CSS en la raíz con la nueva paleta de colores */
 :root {
-    --font-family: 'Arial', sans-serif;
-
-    --color-primary: #12e7e7; /* color3 */
-    --color-secondary: #fcd308; /* color5 */
-    --color-tertiary: #0cf546; /* color4 */
-    --color-bg: #0b5063; /* color1 */
-    --color-text: #552424;
-    --color-white: #758488; /* color2 */
-    --color-left-container: #758488; /* Color de fondo para el contenedor izquierdo (igual al del fondo general) */
-    --color-right-container: #758488; /* Color de fondo para el contenedor derecho */
+    --font-family-base: 'Poppins', sans-serif;
+    --font-family-heading: 'Merriweather', serif;
+    --font-size-base: 20px; /* Tamaño de fuente base */
+    --color-primary: #0b5063; 
+    --color-secondary: #fcd308; 
+    --color-tertiary: #0cf546;
+    --color-gray1: #758488; 
+    --color-gray2: #516064;
+    --color-blue: #1367d4;
     --padding-base: 20px;
     --border-radius: 8px;
+    --color-input-text: #ebecee; /* Color para el texto de ingreso */
+    --color-result-text: #f3efeb; /* Color para el texto de resultado */
+    --color-button-text: #eef0f1; /* Color para el texto de los botones */
 }
 
 /* Reset de CSS para evitar inconsistencias entre navegadores */
@@ -23,8 +25,8 @@
 
 /* Establecer estilos básicos para el cuerpo */
 body {
-    font-family: var(--font-family);
-    background-color: var(--color-bg);
+    font-family: var(--font-family-base);
+    background-color: var(--color-primary);
     color: var(--color-text);
     display: flex;
     flex-direction: column;
@@ -40,7 +42,20 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative; /* Necesario para posicionar el título correctamente */
 }
+
+h1#page-title {
+    font-family: var(--font-family-heading);
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 /* Contenedor principal que ocupa todo el espacio disponible entre el header y el footer */
 main {
@@ -51,8 +66,7 @@ main {
     width: 80%;
     max-width: 1200px;
     padding: var(--padding-base);
-    background-color: var(--color-white);
-    margin: var(--padding-base);
+    background-color: var(--color-gray2);
     border-radius: var(--border-radius);
     margin-left: auto;
     margin-right: auto;
@@ -60,12 +74,11 @@ main {
 
 /* Estilos para el contenedor izquierdo */
 #left-container {
-    flex: 1;
+    flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: var(--padding-base);
-    background-color: var(--color-left-container);
+    background-color: var(--color-gray2);
     height: 100%; /* Ocupa toda la altura disponible del contenedor principal */
 }
 
@@ -73,17 +86,32 @@ main {
     width: 100%; /* Ocupa el ancho completo del contenedor padre */
     flex: 1; /* Permite que el textarea se expanda para ocupar el espacio disponible */
     padding: 50px; /* Espacio interno dentro del contenedor, ajusta según sea necesario */
-    background-color: var(--color-); /* Fondo opcional para destacar el contenedor */
+    background-color: var(--color-text); /* Fondo opcional para destacar el contenedor */
     box-sizing: border-box; /* Incluye padding y border en el cálculo de width y height */
     min-height: 500px; /* Altura mínima del contenedor, ajusta según sea necesario */
-    margin-bottom: 200px; /* Ajusta el margen inferior si es necesario */
+    margin-bottom: 160px; /* Ajusta el margen inferior si es necesario */
+    border: none;
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-base); /* Asigna la fuente base al área de texto */
 }
 
 
 #alert {
+    margin: auto; /* Centra el aviso horizontalmente */
     margin-bottom: 20px; /* Espacio entre el aviso y los botones */
     margin-top: auto; /* Empuja el aviso hacia arriba, si es necesario */
+    text-align: center; /* Centra el contenido del aviso */
+    margin-bottom: 60px; /* Ajusta el margen inferior si es necesario */
 }
+
+#alert .fas {
+    color: var(--color-secondary);; /* Cambia el color del icono del aviso */
+}
+#alert p {
+    color:var(--color-secondary) !important; /* Cambia el color del texto del aviso */
+    font-family: var(--font-family-base); /* Asigna la fuente base al texto del aviso */
+}
+
 
 #button-frame {
     display: flex;
@@ -96,10 +124,8 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
-    background-color: var(--color-right-container);
+    background-color: var(--color-gray1);
     border-radius: var(--border-radius);
-    height: 100%; /* Asegura que el contenedor ocupe toda la altura del contenedor principal */
 }
 
 /* Ajustes para los elementos dentro del contenedor derecho */
@@ -107,14 +133,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 250px;
 }
 
 #result-image {
-    max-width: 100%;
-    height: auto;
-    padding: 160px;
-
+    transform: translate(0, 99px); /* Mueve la imagen 20px a la derecha y 10px hacia abajo */
+    width: 336px; /* Ancho fijo de la imagen */
+    height: 304px; /* Alto fijo de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste dentro de las dimensiones sin deformarse */
 }
 
 #message-container {
@@ -123,86 +148,111 @@ main {
     align-items: center;
     text-align: center;
     flex: 1; /* Permite que el contenedor de mensaje ocupe el espacio disponible */
-    padding: 10px; /* Ajusta según sea necesario para mejorar la alineación */
 }
 
 h3#message-default {
-    font-size: 24px;
-    color: var(--color-primary); /* Color para h3 */
-    margin-bottom: 20px; /* Espacio inferior opcional */
+    font-family: var(--font-family-heading);
+    font-size: 28px;
+    color: var(--color-blue); /* Color para h3 */
+    margin-bottom: 40px; /* Espacio inferior opcional */
 }
 
 h4#message-prompt {
-    font-size: 16px;
+    font-size: 22px;
+    font-family: var(--font-family-heading);
     color: var(--color-secondary); /* Color para h4 */
-    margin-bottom: 10px; /* Espacio inferior opcional */
 }
-
-
 
 
 #text-output {
-    width: 100%;
-    padding: 20px; /* Ajusta el padding según sea necesario */
+    font-size: var(--font-family-base);
+    font-family: var(--font-family-base);
     background-color: var(--color-white);
     border-radius: var(--border-radius);
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    min-height: 500px; /* Asegura que tenga una altura mínima consistente */
-    margin-bottom: 250px; /* Asegura que el margen no afecte el alineamiento */
+    margin-bottom: 405px;
+    min-height: 500px; /* Altura mínima del contenedor, ajusta según sea necesario */
+    border: none;
 }
 
 
-
 #copy-btn {
-    padding: 10px 20px;
     font-size: var(--font-size-base);
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     background-color: var(--color-tertiary);
     color: var(--color-white);
     transition: background-color 0.3s;
+    display: block; /* Asegura que el botón se comporte como un bloque */
+    transform: translateY(-160px); /* Ajusta este valor para mover el botón hacia arriba */
+    margin: auto; /* Centra el botón horizontalmente */
 }
 
-/* Estilos para los textos y botones */
 textarea {
     width: 100%;
     height: auto;
-    padding: var(--padding-base);
+    padding: 50px;
     font-size: var(--font-size-base);
-    border: 1px solid #ccc;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
     resize: none;
 }
 
+
 button {
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: var(--font-size-base);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    background-color: var(--color-primary);
+    background-color: var(--color-blue);
     color: var(--color-white);
     transition: background-color 0.3s;
+    font-family: var(--font-family-base);
 }
+
+
 
 button:hover {
     background-color: var(--color-secondary);
 }
 
+
 p {
     font-size: var(--font-size-base);
+    font-family: var(--font-family-base);
 }
 
-#alert p {
-    color: var(--color-primary); /* Cambia el color del texto del aviso */
+
+
+/* Color del texto en el área de ingreso */
+#text-input {
+    color: var(--color-input-text); /* Cambia el color del texto en el área de ingreso */
+    font-family: var(--font-family-base);
+
 }
 
-#alert i {
-    color: var(--color-primary); /* Cambia el color del icono del aviso */
+/* Color del texto en el área de resultado */
+#text-output {
+    color: var(--color-result-text); /* Cambia el color del texto en el área de resultado */
+    font-family: var(--font-family-base);
+
 }
+
+/* Color del texto en los botones */
+button {
+    color: var(--color-button-text); /* Cambia el color del texto en los botones */
+    font-family: var(--font-family-base);
+}
+
+/* Color del texto en el botón de copiar */
+#copy-btn {
+    color: var(--color-button-text); /* Cambia el color del texto en el botón de copiar */
+}
+
+
+#text-input::placeholder {
+    color: var(--color-left-container-text); /* Aplica el color deseado al texto del placeholder */
+}
+
 
 
 /* Estilos para el pie de página */
@@ -212,6 +262,5 @@ footer {
     color: var(--color-white);
     text-align: center;
     width: 100%;
-    box-shadow: var(--box-shadow);
     margin-top: auto; /* Asegura que el pie de página esté en la parte inferior */
 }
