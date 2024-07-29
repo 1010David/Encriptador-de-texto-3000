@@ -11,45 +11,45 @@
 <body>
     <header>
         <!-- Logo y aviso -->
-        <div id="logo">
-            <a href="#" id="logo-link"><img src="logo.png" alt="Logo"></a>
+        <div class="logo">
+            <a href="#" class="logo-link"><img src="logo.png" alt="Logo"></a>
         </div>
-        <h1 id="page-title">Encriptador7000</h1>
+        <h1 class="page-title">Encriptador7000</h1>
     </header>
     
     <main>
-        <div id="left-container">
-            <textarea id="text-input" placeholder="Ingrese el texto aquí..."></textarea>
-            <div id="alert">
+        <div class="left-container">
+            <textarea class="text-input" placeholder="Ingrese el texto aquí..."></textarea>
+            <div class="alert">
                 <i class="fas fa-exclamation-triangle"></i>
                 <p>Solo letras minúsculas y sin acentos.</p>
             </div>
-            <div id="button-frame">
-                <button id="encrypt-btn">Encriptar</button>
-                <button id="decrypt-btn">Desencriptar</button>
+            <div class="button-frame">
+                <button class="encrypt-btn">Encriptar</button>
+                <button class="decrypt-btn">Desencriptar</button>
             </div>
         </div>
         
-        <div id="right-container">
-            <div id="image-container">
-                <img src="images/imagen.png" alt="Descripción de la imagen" id="result-image">
+        <div class="right-container">
+            <div class="image-container">
+                <img src="images/imagen.png" alt="Descripción de la imagen" class="result-image">
             </div>
-            <div id="message-container">
-                <div id="message-content">
-                    <h3 id="message-default">Ningún mensaje ha sido encontrado</h3>
-                    <h4 id="message-prompt">Ingresa el texto que desees encriptar o desencriptar</h4>
+            <div class="message-container">
+                <div class="message-content">
+                    <h3 class="message-default">Ningún mensaje ha sido encontrado</h3>
+                    <h4 class="message-prompt">Ingresa el texto que desees encriptar o desencriptar</h4>
 
                 </div>
             </div>
-            <div id="result-container" style="display: none;">
-                <textarea id="text-output" readonly></textarea>
-                <button id="copy-btn" style="display: none;">Copiar</button>
+            <div class="result-container" style="display: none;">
+                <textarea class="text-output" readonly></textarea>
+                <button class="copy-btn" >Copiar</button>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>Desarrollado por [Tu Nombre] - [Año]</p>
+        <p>Desarrollado por David Beltran - 2024</p>
     </footer>
 
     <script src="script.js"></script> <!-- Enlaza tu archivo JavaScript -->

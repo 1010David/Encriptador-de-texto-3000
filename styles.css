@@ -23,7 +23,7 @@
     box-sizing: border-box;
 }
 
-/* Establecer estilos básicos para el cuerpo */
+/* Estilos básicos para el cuerpo */
 body {
     font-family: var(--font-family-base);
     background-color: var(--color-primary);
@@ -45,7 +45,7 @@ header {
     position: relative; /* Necesario para posicionar el título correctamente */
 }
 
-h1#page-title {
+h1.page-title {
     font-family: var(--font-family-heading);
     font-size: 2rem;
     color: var(--color-secondary);
@@ -73,7 +73,7 @@ main {
 }
 
 /* Estilos para el contenedor izquierdo */
-#left-container {
+.left-container {
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@ main {
     height: 100%; /* Ocupa toda la altura disponible del contenedor principal */
 }
 
-#text-input {
+.text-input {
     width: 100%; /* Ocupa el ancho completo del contenedor padre */
     flex: 1; /* Permite que el textarea se expanda para ocupar el espacio disponible */
     padding: 50px; /* Espacio interno dentro del contenedor, ajusta según sea necesario */
@@ -93,10 +93,18 @@ main {
     border: none;
     font-size: var(--font-size-base);
     font-family: var(--font-family-base); /* Asigna la fuente base al área de texto */
+    outline: none; /* Quita el borde de enfoque */
+    color: var(--color-input-text); /* Cambia el color del texto en el área de ingreso */
+    font-family: var(--font-family-base);
+}
+.text-input::placeholder {
+    color: var(--color-left-container-text); /* Aplica el color deseado al texto del placeholder */
 }
 
 
-#alert {
+
+
+.alert {
     margin: auto; /* Centra el aviso horizontalmente */
     margin-bottom: 20px; /* Espacio entre el aviso y los botones */
     margin-top: auto; /* Empuja el aviso hacia arriba, si es necesario */
@@ -104,23 +112,23 @@ main {
     margin-bottom: 60px; /* Ajusta el margen inferior si es necesario */
 }
 
-#alert .fas {
+.alert .fas {
     color: var(--color-secondary);; /* Cambia el color del icono del aviso */
 }
-#alert p {
+.alert p {
     color:var(--color-secondary) !important; /* Cambia el color del texto del aviso */
     font-family: var(--font-family-base); /* Asigna la fuente base al texto del aviso */
 }
 
 
-#button-frame {
+.button-frame {
     display: flex;
     justify-content: space-around;
     width: 100%;
 }
 
 /* Estilos para el contenedor derecho */
-#right-container {
+.right-container {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -129,20 +137,20 @@ main {
 }
 
 /* Ajustes para los elementos dentro del contenedor derecho */
-#image-container {
+.image-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#result-image {
+.result-image {
     transform: translate(0, 99px); /* Mueve la imagen 20px a la derecha y 10px hacia abajo */
     width: 336px; /* Ancho fijo de la imagen */
     height: 304px; /* Alto fijo de la imagen */
     object-fit: cover; /* Asegura que la imagen se ajuste dentro de las dimensiones sin deformarse */
 }
 
-#message-container {
+.message-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,41 +158,44 @@ main {
     flex: 1; /* Permite que el contenedor de mensaje ocupe el espacio disponible */
 }
 
-h3#message-default {
+h3.message-default {
     font-family: var(--font-family-heading);
     font-size: 28px;
     color: var(--color-blue); /* Color para h3 */
     margin-bottom: 40px; /* Espacio inferior opcional */
 }
 
-h4#message-prompt {
+h4.message-prompt {
     font-size: 22px;
     font-family: var(--font-family-heading);
     color: var(--color-secondary); /* Color para h4 */
 }
 
 
-#text-output {
+.text-output {
     font-size: var(--font-family-base);
     font-family: var(--font-family-base);
     background-color: var(--color-white);
     border-radius: var(--border-radius);
-    margin-bottom: 405px;
+    margin-bottom: 320px;
     min-height: 500px; /* Altura mínima del contenedor, ajusta según sea necesario */
     border: none;
+    outline: none; /* Quita el borde de enfoque */
+    color: var(--color-result-text); /* Cambia el color del texto en el área de resultado */
 }
 
 
-#copy-btn {
+.copy-btn {
     font-size: var(--font-size-base);
     border: none;
     cursor: pointer;
     background-color: var(--color-tertiary);
-    color: var(--color-white);
     transition: background-color 0.3s;
     display: block; /* Asegura que el botón se comporte como un bloque */
-    transform: translateY(-160px); /* Ajusta este valor para mover el botón hacia arriba */
+    transform: translateY(-100px); /* Ajusta este valor para mover el botón hacia arriba */
     margin: auto; /* Centra el botón horizontalmente */
+    color: var(--color-button-text); /* Cambia el color del texto en el botón de copiar */
+
 }
 
 textarea {
@@ -204,8 +215,9 @@ button {
     border-radius: var(--border-radius);
     cursor: pointer;
     background-color: var(--color-blue);
-    color: var(--color-white);
     transition: background-color 0.3s;
+    font-family: var(--font-family-heading);
+    color: var(--color-button-text); /* Cambia el color del texto en los botones */
     font-family: var(--font-family-base);
 }
 
@@ -213,44 +225,13 @@ button {
 
 button:hover {
     background-color: var(--color-secondary);
+    color: var(--color-blue); /* Cambiar el color del texto al pasar el cursor */
 }
 
 
 p {
     font-size: var(--font-size-base);
     font-family: var(--font-family-base);
-}
-
-
-
-/* Color del texto en el área de ingreso */
-#text-input {
-    color: var(--color-input-text); /* Cambia el color del texto en el área de ingreso */
-    font-family: var(--font-family-base);
-
-}
-
-/* Color del texto en el área de resultado */
-#text-output {
-    color: var(--color-result-text); /* Cambia el color del texto en el área de resultado */
-    font-family: var(--font-family-base);
-
-}
-
-/* Color del texto en los botones */
-button {
-    color: var(--color-button-text); /* Cambia el color del texto en los botones */
-    font-family: var(--font-family-base);
-}
-
-/* Color del texto en el botón de copiar */
-#copy-btn {
-    color: var(--color-button-text); /* Cambia el color del texto en el botón de copiar */
-}
-
-
-#text-input::placeholder {
-    color: var(--color-left-container-text); /* Aplica el color deseado al texto del placeholder */
 }
 
 

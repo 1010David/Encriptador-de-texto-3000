@@ -1,14 +1,14 @@
 // Obtener elementos del DOM
-const textInput = document.getElementById('text-input');
-const textOutput = document.getElementById('text-output');
-const encryptBtn = document.getElementById('encrypt-btn');
-const decryptBtn = document.getElementById('decrypt-btn');
-const copyBtn = document.getElementById('copy-btn');
-const resultContainer = document.getElementById('result-container');
-const messageDefault = document.getElementById('message-default');
-const messagePrompt = document.getElementById('message-prompt');
-const resultImage = document.getElementById('result-image');
-const logoLink = document.getElementById('logo-link');
+const textInput = document.querySelector('.text-input');
+const textOutput = document.querySelector('.text-output');
+const encryptBtn = document.querySelector('.encrypt-btn');
+const decryptBtn = document.querySelector('.decrypt-btn');
+const copyBtn = document.querySelector('.copy-btn');
+const resultContainer = document.querySelector('.result-container');
+const messageDefault = document.querySelector('.message-default');
+const messagePrompt = document.querySelector('.message-prompt');
+const resultImage = document.querySelector('.result-image');
+const logoLink = document.querySelector('.logo-link');
 
 // Función para encriptar texto
 function encryptText(text) {
@@ -34,6 +34,8 @@ function decryptText(text) {
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         alert('Texto copiado al portapapeles');
+    }).catch(err => {
+        console.error('Error al copiar al portapapeles:', err);
     });
 }
 
@@ -47,6 +49,23 @@ function resetPage() {
     messagePrompt.style.display = 'block';
     copyBtn.style.display = 'none';
 }
+
+// Función para validar el texto
+function validateText(text) {
+    // Expresión regular que permite solo letras minúsculas y espacios
+    const regex = /^[a-z\s]*$/;
+    return regex.test(text);
+}
+
+// Event listener para validar el texto mientras se escribe
+textInput.addEventListener('input', () => {
+    const inputText = textInput.value.trim();
+    if (!validateText(inputText)) {
+        alert('Solo se permiten letras minúsculas, sin acentos.');
+        textInput.value = inputText.slice(0, -1); // Remover el último carácter no válido
+    }
+});
+
 
 // Event listener para el botón de encriptar
 encryptBtn.addEventListener('click', () => {
