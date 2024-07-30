@@ -3,19 +3,20 @@
     --font-family-base: 'Poppins', sans-serif;
     --font-family-heading: 'Merriweather', serif;
     --font-size-base: 20px; /* Tamaño de fuente base */
-    --color-primary: #0b5063; 
-    --color-secondary: #fcd308; 
-    --color-tertiary: #0cf546;
+    --color-primary: #054a5e; 
+    --color-secondary: #fcf808; 
+    --color-tertiary: #06da3b;
     --color-gray1: #758488; 
     --color-gray2: #516064;
-    --color-blue: #1367d4;
+    --color-blue: #1c5ce6;
+    --color-bluee: #1c84e6;
     --padding-base: 20px;
     --border-radius: 8px;
-    --color-input-text: #ebecee; /* Color para el texto de ingreso */
-    --color-result-text: #f3efeb; /* Color para el texto de resultado */
-    --color-button-text: #eef0f1; /* Color para el texto de los botones */
+    --color-input-text: #cecfd1; /* Color para el texto de ingreso */
+    --color-result-text: #c4c3c3; /* Color para el texto de resultado */
+    --color-button-text: #efff0b; /* Color para el texto de los botones */
+    --color-border: #f9fd11; /* Color del borde para los botones */
 }
-
 /* Reset de CSS para evitar inconsistencias entre navegadores */
 * {
     margin: 0;
@@ -44,6 +45,12 @@ header {
     justify-content: space-between;
     position: relative; /* Necesario para posicionar el título correctamente */
 }
+/* Estilo general para el logo dentro de la clase .logo */
+.logo img {
+    width: 100px; /* Ajusta el ancho del logo según sea necesario */
+    height: auto; /* Mantiene la proporción del logo */
+    max-width: 100%; /* Asegura que el logo no exceda el contenedor */
+}
 
 h1.page-title {
     font-family: var(--font-family-heading);
@@ -54,6 +61,7 @@ h1.page-title {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 25px var(--color-secondary), 0 0 5px var(--color-secondary);
 }
 
 
@@ -85,7 +93,7 @@ main {
 .text-input {
     width: 100%; /* Ocupa el ancho completo del contenedor padre */
     flex: 1; /* Permite que el textarea se expanda para ocupar el espacio disponible */
-    padding: 50px; /* Espacio interno dentro del contenedor, ajusta según sea necesario */
+    padding: 80px; /* Espacio interno dentro del contenedor, ajusta según sea necesario */
     background-color: var(--color-text); /* Fondo opcional para destacar el contenedor */
     box-sizing: border-box; /* Incluye padding y border en el cálculo de width y height */
     min-height: 500px; /* Altura mínima del contenedor, ajusta según sea necesario */
@@ -97,6 +105,7 @@ main {
     color: var(--color-input-text); /* Cambia el color del texto en el área de ingreso */
     font-family: var(--font-family-base);
 }
+
 .text-input::placeholder {
     color: var(--color-left-container-text); /* Aplica el color deseado al texto del placeholder */
 }
@@ -177,25 +186,27 @@ h4.message-prompt {
     font-family: var(--font-family-base);
     background-color: var(--color-white);
     border-radius: var(--border-radius);
-    margin-bottom: 320px;
+    margin-bottom: 300px;
     min-height: 500px; /* Altura mínima del contenedor, ajusta según sea necesario */
     border: none;
     outline: none; /* Quita el borde de enfoque */
     color: var(--color-result-text); /* Cambia el color del texto en el área de resultado */
+    font-size: var(--font-size-base);
 }
 
 
 .copy-btn {
+    font-family: var(--font-family-base);
     font-size: var(--font-size-base);
-    border: none;
+    border: 2px solid var(--color-border);
     cursor: pointer;
     background-color: var(--color-tertiary);
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     display: block; /* Asegura que el botón se comporte como un bloque */
-    transform: translateY(-100px); /* Ajusta este valor para mover el botón hacia arriba */
+    transform: translateY(-110px); /* Ajusta este valor para mover el botón hacia arriba */
     margin: auto; /* Centra el botón horizontalmente */
-    color: var(--color-button-text); /* Cambia el color del texto en el botón de copiar */
-
+    color: var(--color-blue); /* Cambia el color del texto en el botón de copiar */
+    border-radius: var(--border-radius);
 }
 
 textarea {
@@ -209,13 +220,13 @@ textarea {
 
 
 button {
-    padding: 15px 30px;
+    padding: 10px 30px;
     font-size: var(--font-size-base);
-    border: none;
+    border: 2px solid var(--color-bluee);
     border-radius: var(--border-radius);
     cursor: pointer;
     background-color: var(--color-blue);
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     font-family: var(--font-family-heading);
     color: var(--color-button-text); /* Cambia el color del texto en los botones */
     font-family: var(--font-family-base);
@@ -226,6 +237,7 @@ button {
 button:hover {
     background-color: var(--color-secondary);
     color: var(--color-blue); /* Cambiar el color del texto al pasar el cursor */
+    border-color: var(--color-secondary); /* Cambiar el color del borde al pasar el cursor */
 }
 
 
@@ -240,8 +252,249 @@ p {
 footer {
     padding: var(--padding-base);
     background-color: var(--color-bg); /* Usa el mismo color de fondo que el cuerpo */
-    color: var(--color-white);
     text-align: center;
-    width: 100%;
-    margin-top: auto; /* Asegura que el pie de página esté en la parte inferior */
+}
+
+footer p {
+    font-size: 0.9rem;
+    font-family: var(--font-family-base); /* Asigna la fuente base al texto del pie de página */
+    color: var(--color-gray1); /* Cambia el color del texto en el pie de página */
+}
+
+
+
+
+
+
+
+
+
+/* Media Query para Tablets (ancho máximo de 768px) */
+@media (max-width: 868px) {
+    header {
+        padding: 15px;
+    }
+    .logo img {
+        width: 88px; /* Ajusta el ancho del logo para teléfonos */
+    }
+    h1.page-title {
+        font-size: 1.5rem;
+        position: static; /* Quita el posicionamiento absoluto para pantallas más pequeñas */
+        transform: none; /* Elimina la transformación para centrar el texto */
+        text-align: center; /* Centra el texto del título */
+        margin: 0;
+    }
+    
+    main {
+        flex-direction: column; /* Coloca los contenedores uno debajo del otro */
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .left-container {
+        width: 100%;
+        min-height: auto; /* Ajusta la altura mínima */
+        margin-bottom: 10px;
+    }
+    
+    h3.message-default {
+        font-size: 22px;
+        margin-top: 20px; /* Aumenta el margen superior */
+        margin-left: 25px; /* Aumenta el margen izquierdo */
+        margin-right: 25px; /* Aumenta el margen derecho */
+
+    }
+    
+    h4.message-prompt {
+        font-size: 21px;
+        margin-left: 40px; /* Aumenta el margen izquierdo */
+        margin-right: 40px; /* Aumenta el margen derecho */
+        margin-bottom: 10px;
+    }
+
+    .alert .fas {
+        font-size: 18px; /* Ajusta el tamaño del icono si es necesario */
+    }
+
+    .alert p {
+        font-size: 18px; /* Ajusta el tamaño del texto si es necesario */
+    }
+    .text-input {
+        font-size: 18px; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+        min-height: 250px; /* Ajusta la altura mínima */
+    }
+    
+    .button-frame {
+        display: flex;
+        flex-direction: column; /* Cambia la dirección a columna para apilar los botones */
+        gap: 55px; /* Espacio entre los botones, ajusta según sea necesario */
+        align-items: center; /* Centra los botones horizontalmente */
+    }
+    
+    .right-container {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .result-image {
+        width: 100%;
+        height: auto; /* Ajusta la altura automáticamente */
+        transform: none; /* Elimina la transformación */
+        display: none; /* Oculta la imagen en tablets */
+
+    }
+    
+    .message-default {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .message-prompt {
+        font-size: 20px;
+    }
+    
+    .text-output {
+        font-size: 18px;
+        min-height: 250px; /* Ajusta la altura mínima */
+        margin: 50px;
+    }
+    
+    .copy-btn {
+        font-size: 18px;
+        padding: 8px 20px;
+        transform: none; /* Elimina la transformación */
+        margin-top: 10px; /* Añade margen superior si es necesario */
+        margin-bottom: 20px;
+    }
+    
+    textarea {
+        font-size: 18px;
+        padding: 15px;
+    }
+    
+    button {
+        font-size: 18px;
+        padding: 8px 20px;
+    }
+    
+    footer {
+        padding: 10px;
+    }
+    
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+/* Media Query para Teléfonos (ancho máximo de 480px) */
+@media (max-width: 550px) {
+    header {
+        padding: 10px;
+    }
+    .logo img {
+        width: 70px; /* Ajusta el ancho del logo para teléfonos */
+    }
+    h1.page-title {
+        font-size: 1.2rem;
+        position: static;
+        transform: none;
+        text-align: center;
+    }
+    
+    main {
+        padding: 5px;
+    }
+    
+    .left-container {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .alert .fas {
+        font-size: 16px; /* Ajusta el tamaño del icono si es necesario */
+    }
+
+    .alert p {
+        font-size: 16px; /* Ajusta el tamaño del texto si es necesario */
+    }
+    
+    .text-input {
+        font-size: 16px;
+        min-height: 250px;
+    }
+    
+    .button-frame {
+        display: flex;
+        flex-direction: column; /* Cambia la dirección a columna para apilar los botones */
+        gap: 50px; /* Espacio entre los botones, ajusta según sea necesario */
+        align-items: center; /* Centra los botones horizontalmente */
+        margin-bottom: 50px;
+    }
+    
+    .right-container {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    h3.message-default {
+        font-size: 18px;
+        margin-top: 20px; /* Aumenta el margen superior */
+        margin-left: 25px; /* Aumenta el margen izquierdo */
+        margin-right: 25px; /* Aumenta el margen derecho */
+
+    }
+    
+    h4.message-prompt {
+        font-size: 16px;
+        margin-left: 40px; /* Aumenta el margen izquierdo */
+        margin-right: 40px; /* Aumenta el margen derecho */
+        margin-bottom: 10px;
+    }
+
+    .result-image {
+        width: 100%;
+        height: auto;
+        display: none; /* Oculta la imagen */
+    }
+    
+    .message-default {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .message-prompt {
+        font-size: 18px;
+    }
+    
+    .text-output {
+        font-size: 16px;
+        min-height: 250px;
+        margin: 50px;
+    }
+    
+    .copy-btn {
+        font-size: 16px;
+        padding: 6px 15px;
+        margin-bottom: 80px;
+    }
+    
+    textarea {
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    button {
+        font-size: 16px;
+        padding: 6px 15px;
+    }
+    
+    footer {
+        padding: 5px;
+    }
+    
+    footer p {
+        font-size: 0.7rem;
+    }
 }
