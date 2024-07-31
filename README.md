@@ -1,6 +1,6 @@
 # Encriptador de Texto (enDesarrollo)
 
-Este es un proyecto de encriptador de texto desarrollado como parte de un desafío de programación. La aplicación permite encriptar y desencriptar textos basados en un conjunto específico de reglas. 
+Proyecto de encriptador de texto desarrollado como parte de un desafío de programación. La aplicación permite encriptar y desencriptar textos basados en un conjunto específico de reglas. 
 
 ## Descripción
 
