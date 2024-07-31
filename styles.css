@@ -45,6 +45,7 @@ header {
     justify-content: space-between;
     position: relative; /* Necesario para posicionar el título correctamente */
 }
+
 /* Estilo general para el logo dentro de la clase .logo */
 .logo img {
     width: 100px; /* Ajusta el ancho del logo según sea necesario */
@@ -63,7 +64,6 @@ h1.page-title {
     transform: translate(-50%, -50%);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 25px var(--color-secondary), 0 0 5px var(--color-secondary);
 }
-
 
 /* Contenedor principal que ocupa todo el espacio disponible entre el header y el footer */
 main {
@@ -110,25 +110,23 @@ main {
     color: var(--color-left-container-text); /* Aplica el color deseado al texto del placeholder */
 }
 
-
-
-
 .alert {
     margin: auto; /* Centra el aviso horizontalmente */
-    margin-bottom: 20px; /* Espacio entre el aviso y los botones */
+    margin-bottom: 60px; /* Espacio entre el aviso y los botones */
     margin-top: auto; /* Empuja el aviso hacia arriba, si es necesario */
     text-align: center; /* Centra el contenido del aviso */
-    margin-bottom: 60px; /* Ajusta el margen inferior si es necesario */
 }
 
 .alert .fas {
     color: var(--color-secondary);; /* Cambia el color del icono del aviso */
+    font-size: 17px; /* Ajusta el tamaño del texto si es necesario */
 }
+
 .alert p {
     color:var(--color-secondary) !important; /* Cambia el color del texto del aviso */
     font-family: var(--font-family-base); /* Asigna la fuente base al texto del aviso */
+    font-size: 17px; /* Ajusta el tamaño del texto si es necesario */
 }
-
 
 .button-frame {
     display: flex;
@@ -143,6 +141,7 @@ main {
     flex-direction: column;
     background-color: var(--color-gray1);
     border-radius: var(--border-radius);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Agrega sombra al contenedor derecho */
 }
 
 /* Ajustes para los elementos dentro del contenedor derecho */
@@ -180,7 +179,6 @@ h4.message-prompt {
     color: var(--color-secondary); /* Color para h4 */
 }
 
-
 .text-output {
     font-size: var(--font-family-base);
     font-family: var(--font-family-base);
@@ -193,7 +191,6 @@ h4.message-prompt {
     color: var(--color-result-text); /* Cambia el color del texto en el área de resultado */
     font-size: var(--font-size-base);
 }
-
 
 .copy-btn {
     font-family: var(--font-family-base);
@@ -218,7 +215,6 @@ textarea {
     resize: none;
 }
 
-
 button {
     padding: 10px 30px;
     font-size: var(--font-size-base);
@@ -232,21 +228,16 @@ button {
     font-family: var(--font-family-base);
 }
 
-
-
 button:hover {
     background-color: var(--color-secondary);
     color: var(--color-blue); /* Cambiar el color del texto al pasar el cursor */
     border-color: var(--color-secondary); /* Cambiar el color del borde al pasar el cursor */
 }
 
-
 p {
     font-size: var(--font-size-base);
     font-family: var(--font-family-base);
 }
-
-
 
 /* Estilos para el pie de página */
 footer {
@@ -262,21 +253,16 @@ footer p {
 }
 
 
-
-
-
-
-
-
-
 /* Media Query para Tablets (ancho máximo de 768px) */
-@media (max-width: 868px) {
+@media (max-width: 798px) {
     header {
         padding: 15px;
     }
+
     .logo img {
         width: 88px; /* Ajusta el ancho del logo para teléfonos */
     }
+
     h1.page-title {
         font-size: 1.5rem;
         position: static; /* Quita el posicionamiento absoluto para pantallas más pequeñas */
@@ -313,12 +299,13 @@ footer p {
     }
 
     .alert .fas {
-        font-size: 18px; /* Ajusta el tamaño del icono si es necesario */
+        font-size: 14px; /* Ajusta el tamaño del icono si es necesario */
     }
 
     .alert p {
-        font-size: 18px; /* Ajusta el tamaño del texto si es necesario */
+        font-size: 14px; /* Ajusta el tamaño del texto si es necesario */
     }
+
     .text-input {
         font-size: 18px; /* Ajusta el tamaño del texto para pantallas más pequeñas */
         min-height: 250px; /* Ajusta la altura mínima */
@@ -326,8 +313,7 @@ footer p {
     
     .button-frame {
         display: flex;
-        flex-direction: column; /* Cambia la dirección a columna para apilar los botones */
-        gap: 55px; /* Espacio entre los botones, ajusta según sea necesario */
+        gap: 20px; /* Espacio entre los botones, ajusta según sea necesario */
         align-items: center; /* Centra los botones horizontalmente */
     }
     
@@ -389,13 +375,15 @@ footer p {
 
 
 /* Media Query para Teléfonos (ancho máximo de 480px) */
-@media (max-width: 550px) {
+@media (max-width: 480px) {
     header {
         padding: 10px;
     }
+
     .logo img {
         width: 70px; /* Ajusta el ancho del logo para teléfonos */
     }
+
     h1.page-title {
         font-size: 1.2rem;
         position: static;
@@ -413,11 +401,11 @@ footer p {
     }
 
     .alert .fas {
-        font-size: 16px; /* Ajusta el tamaño del icono si es necesario */
+        font-size: 12px; /* Ajusta el tamaño del icono si es necesario */
     }
 
     .alert p {
-        font-size: 16px; /* Ajusta el tamaño del texto si es necesario */
+        font-size: 12px; /* Ajusta el tamaño del texto si es necesario */
     }
     
     .text-input {

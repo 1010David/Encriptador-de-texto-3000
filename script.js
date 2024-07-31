@@ -48,6 +48,15 @@ function resetPage() {
     messageDefault.style.display = 'block';
     messagePrompt.style.display = 'block';
     copyBtn.style.display = 'none';
+
+    // Estilos específicos para tabletas y móviles
+    if (window.innerWidth <= 768) {
+        // Estilos para tabletas
+        resultImage.style.display = 'none'; // Ocultar la imagen si es necesario
+    } else if (window.innerWidth <= 480) {
+        // Estilos para teléfonos
+        resultImage.style.display = 'none'; // Ocultar la imagen si es necesario
+    }
 }
 
 // Función para validar el texto
